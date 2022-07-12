@@ -4,6 +4,8 @@ const getFiles = require("./getFiles");
 const getEndPoints = require('./getEndPoints');
 const objectToSchema = require("./objectToSchema");
 const getReferenceFromResPath = require("./getReferenceFromResPath");
+const fetchSendDoc = require("./fetchSendDoc");
+const fetchReqResDoc = require("./fetchSendReqRes");
 
 let globalProjectName
 let docAPIRoute
@@ -31,12 +33,15 @@ const sendDoc = (jsonDoc) => {
 }
 
 const sendReqRes = (req, status, res) => {
+
+    console.log(req.originalUrl);
+
     const reqRes = {
         Name: globalProjectName,
         req: {
             body: req.body,
             "content-type": req.headers[["content-type"]],
-            endpoint: req.url,
+            endpoint: req.originalUrl,
             method: req.method,
             reqBy: req.headers.origin
         },
@@ -45,8 +50,8 @@ const sendReqRes = (req, status, res) => {
             body: res
         }
     }
-    // fetchReqResDoc(`${reqResAPIRoute}/${globalProjectName}`, reqRes)
-    return reqRes
+
+    fetchReqResDoc(`${reqResAPIRoute}/${globalProjectName}`, reqRes)
 }
 
 

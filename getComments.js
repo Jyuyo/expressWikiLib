@@ -40,11 +40,11 @@ const getComments = (files, endpoints) => {
                         const route = "/" + endpoint.split(/\/(.*)/s).shift().trim()
 
                         const endpointReference = `${HTTPMethod} /${endpoint}`
-                    
+
                         if (endpoints.routes[route] &&
                             endpoints.routes[route][endpointReference] &&
                             !endpoint.endsWith('/')) {
-                                
+                            
                             endpoints.routes[route][endpointReference].Doc[[description[0]
                                 .trim().toLowerCase().replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())))]] = description[1].trim()
 

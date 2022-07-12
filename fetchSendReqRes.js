@@ -1,3 +1,4 @@
+const { default: fetch } = require("node-fetch");
 
 
 const fetchReqResDoc = (endpoint, reqRes) => {
@@ -13,3 +14,5 @@ const fetchReqResDoc = (endpoint, reqRes) => {
         .catch(e => console.log(e))
     
 }
+
+module.exports = fetchReqResDoc

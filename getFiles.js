@@ -23,9 +23,11 @@ const getFiles = (root) => {
         }
     }
 
+
     const ls = (dir) => {
         return fs.readdirSync(dir)
     }
+    
     
     files.forEach(getFile.bind(null, ''))
 
