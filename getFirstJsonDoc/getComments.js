@@ -1,4 +1,4 @@
-const extract = require('babel-extract-comments');
+const extract = require('esprima-extract-comments');
 const { keyWords } = require('./keyWords.json');
 
 const getComments = (files, endpoints) => {
@@ -71,12 +71,6 @@ const getComments = (files, endpoints) => {
             }
         })
     })
-
-    // var s = extract.file(`./index.js`)
-    var s = extract.file(`./index.js`).pop().value.replace(/\r\n/g, '').replace(/\*/g, '').split('@')[1]
-    // s = s.split(/(?<=^\S+)\s/)
-    // console.log(s);
-
 
 }
 

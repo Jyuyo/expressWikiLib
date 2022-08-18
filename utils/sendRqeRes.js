@@ -1,30 +1,3 @@
-const { fetchReqResDoc, fetchSendDoc } = require("./fetch");
-const getFirstJsonDoc = require("./getFirstJsonDoc");
-const { getReferenceFromResPath, objectToSchema, handleDynamicRoutes } = require("./utils");
-
-
-let globalProjectName
-let docAPIRoute
-let reqResAPIRoute
-
-
-const nextWikiLib = (app, options) => {
-
-    const { dir, APIName, docAPIEndpoint, reqResAPIEndpoint } = options
-
-    globalProjectName = APIName
-    docAPIRoute = docAPIEndpoint
-    reqResAPIRoute = reqResAPIEndpoint
-
-    const jsonDoc = getFirstJsonDoc(dir, app, APIName)
-
-    return jsonDoc
-}
-
-
-const sendDoc = (jsonDoc) => {
-    fetchSendDoc(docAPIRoute, jsonDoc);
-}
 
 
 const sendReqRes = (req, status, res, bridge) => {
@@ -70,12 +43,4 @@ const sendReqRes = (req, status, res, bridge) => {
 
 }
 
-
-module.exports = {
-    sendDoc,
-    sendReqRes,
-    nextWikiLib,
-    objectToSchema,
-    getReferenceFromResPath,
-    handleDynamicRoutes
-}
+module.exports = sendReqRes
